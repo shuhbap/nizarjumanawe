@@ -6,10 +6,10 @@
   <title>NIZAR JUMANA & ANSIYA SAFEER</title>
 
   <!-- ============================================
-       FAVICON (N&J Monogram in Gold)
+       FAVICON
        ============================================ -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdfaf7'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-weight='600' fill='%23b89b7b' text-anchor='middle' letter-spacing='1'%3EN%26J%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdfaf7'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-weight='600' fill='%23b89b7b' text-anchor='middle' letter-spacing='1'%3EN%26J%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/jpeg" href="https://files.catbox.moe/qo1cn8.jpg">
+  <link rel="apple-touch-icon" href="https://files.catbox.moe/qo1cn8.jpg">
 
   <!-- ============================================
        LINK PREVIEW / OPEN GRAPH (WhatsApp, FB, etc.)
@@ -17,7 +17,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nizar & Jumana · Ansiya & Safeer — Wedding Invitation">
   <meta property="og:description" content="Two Couples · One Celebration. Save the date — Sunday, 04 October 2026 · K.N.M Auditorium, Kattupara.">
-  <meta property="og:image" content="https://files.catbox.moe/sjxlys.jpg">
+  <meta property="og:image" content="https://files.catbox.moe/qo1cn8.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Wedding Invitation — Nizar & Jumana · Ansiya & Safeer">
@@ -27,12 +27,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Nizar & Jumana · Ansiya & Safeer — Wedding Invitation">
   <meta name="twitter:description" content="Two Couples · One Celebration. Save the date — Sunday, 04 October 2026 · K.N.M Auditorium, Kattupara.">
-  <meta name="twitter:image" content="https://files.catbox.moe/sjxlys.jpg">
+  <meta name="twitter:image" content="https://files.catbox.moe/qo1cn8.jpg">
 
   <!-- WhatsApp / Telegram / iMessage -->
   <meta itemprop="name" content="Nizar & Jumana · Ansiya & Safeer — Wedding Invitation">
   <meta itemprop="description" content="Two Couples · One Celebration. Save the date — Sunday, 04 October 2026.">
-  <meta itemprop="image" content="https://files.catbox.moe/sjxlys.jpg">
+  <meta itemprop="image" content="https://files.catbox.moe/qo1cn8.jpg">
 
   <meta name="theme-color" content="#b89b7b">
   <meta name="description" content="Wedding invitation for Nizar & Jumana and Ansiya & Safeer. Two couples, one celebration. Sunday, 04 October 2026.">
@@ -559,56 +559,23 @@
       font-weight: 500;
     }
 
-    /* ----- COUPLE NAMES ----- */
-    .couple-names {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      line-height: 1.4;
-      margin-bottom: 4px;
-      letter-spacing: 0.2px;
-      background: linear-gradient(135deg, var(--text-dark) 0%, var(--gold-deep) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    body.dark .couple-names {
-      background: linear-gradient(135deg, var(--text-dark) 0%, var(--gold-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .couple-names .ampersand {
-      color: var(--antique-gold);
-      font-style: italic;
-      font-weight: 500;
-      display: inline-block;
-      margin: 0 8px;
-      font-size: 1.2rem;
-      -webkit-text-fill-color: var(--antique-gold);
-      background: none;
-    }
-
-    /* ----- COUPLES CARDS ----- */
+    /* ============================================
+       COUPLES — TWO-COLUMN LAYOUT
+       GROOM/Bride left · Bride/Groom right
+       ============================================ */
     .couples-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
 
     .couple-card {
       background: var(--pearl);
       border: var(--border-light);
       border-radius: 20px;
-      padding: 26px 24px;
+      padding: 28px 26px;
       box-shadow: var(--shadow-soft);
       transition: box-shadow 0.4s, transform 0.4s;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
       position: relative;
       overflow: hidden;
     }
@@ -633,28 +600,99 @@
       transform: translateY(-2px);
     }
 
-    .couple-detail {
-      font-size: 0.82rem;
+    .couple-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .couple-col {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .couple-role {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--antique-gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .couple-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--text-dark) 0%, var(--gold-deep) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.2px;
+    }
+
+    body.dark .couple-name {
+      background: linear-gradient(135deg, var(--text-dark) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .couple-family {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
       color: var(--text-soft);
       line-height: 1.7;
-      margin-top: 4px;
-      font-family: var(--font-sans);
       font-weight: 400;
+      margin-top: 6px;
     }
 
-    .couple-detail span {
+    .couple-family .relation {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--gold-deep);
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+
+    body.dark .couple-family .relation {
+      color: var(--gold-light);
+    }
+
+    .couple-family .address {
       display: block;
+      margin-top: 2px;
     }
 
-    .thin-divider {
-      width: 40px;
+    .couple-mini-divider {
+      width: 24px;
       height: 1px;
       background: var(--antique-gold);
       opacity: 0.5;
-      margin: 12px 0;
+      margin: 8px auto;
     }
 
-    /* ----- COUNTDOWN ----- */
+    .couple-ampersand {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--antique-gold);
+      text-align: center;
+      margin: 12px 0 4px;
+      display: none;
+    }
+
+    /* ============================================
+       COUNTDOWN
+       ============================================ */
     .countdown-section {
       text-align: center;
     }
@@ -1369,7 +1407,10 @@
       section { padding: 24px 0; }
       .couples-wrapper { gap: 16px; }
       .couple-card { padding: 22px 18px; }
-      .couple-names { font-size: 1.15rem; }
+      .couple-grid { gap: 14px; }
+      .couple-name { font-size: 1.05rem; }
+      .couple-role { font-size: 0.55rem; letter-spacing: 2px; }
+      .couple-family { font-size: 0.7rem; }
       .media-card { min-height: 240px; }
       .media-content .reel-view video,
       .media-content .poster-view img { min-height: 220px; }
@@ -1393,11 +1434,12 @@
     }
 
     @media (max-width: 480px) {
-      .couple-names { font-size: 1rem; }
+      .couple-name { font-size: 0.95rem; }
+      .couple-grid { gap: 10px; }
+      .couple-family { font-size: 0.65rem; }
       .media-card { min-height: 200px; }
       .media-content .reel-view video,
       .media-content .poster-view img { min-height: 180px; }
-      .couple-detail { font-size: 0.78rem; }
       .countdown-box { min-width: 55px; padding: 10px 3px; }
       .countdown-number { font-size: 1.2rem; }
       .countdown-label { font-size: 0.5rem; letter-spacing: 1px; }
@@ -1513,31 +1555,60 @@
       </div>
     </section>
 
-    <!-- Couples -->
+    <!-- Couples (Two-Column Layout) -->
     <section style="padding: 16px 0;" class="reveal">
       <div class="container">
         <div class="section-title" data-i18n="couplesTitle">Two Couples · One Celebration</div>
         <div class="couples-wrapper" id="couplesWrapper">
+
+          <!-- Couple 1: GROOM left · BRIDE right -->
           <div class="couple-card">
-            <div class="couple-names">
-              Hafiz Muhammed Nizar Baqavi <span class="ampersand">&</span> Fathima Jumana Sana-Iyya
-            </div>
-            <div class="thin-divider"></div>
-            <div class="couple-detail">
-              <span data-i18n="groom1">Son of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala</span>
-              <span data-i18n="bride1">Daughter of Moidutty Musliyar & Juvairiya, Kolayil (H), Cherippur</span>
+            <div class="couple-grid">
+              <div class="couple-col">
+                <div class="couple-role" data-i18n="groomLabel">Groom</div>
+                <div class="couple-name">Hafiz Muhammed Nizar Baqavi</div>
+                <div class="couple-family">
+                  <span class="relation" data-i18n="so">S/O</span>
+                  <span data-i18n="groom1Family">Veeran Nujoomi &amp; Soudha</span>
+                  <span class="address" data-i18n="groom1Address">Vallil (H), Cheerattamala</span>
+                </div>
+              </div>
+              <div class="couple-col">
+                <div class="couple-role" data-i18n="brideLabel">Bride</div>
+                <div class="couple-name">Fathima Jumana Sana-Iyya</div>
+                <div class="couple-family">
+                  <span class="relation" data-i18n="do">D/O</span>
+                  <span data-i18n="bride1Family">Moidutty Musliyar &amp; Juvairiya</span>
+                  <span class="address" data-i18n="bride1Address">Kolayil (H), Cherippur</span>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Couple 2: BRIDE left · GROOM right -->
           <div class="couple-card">
-            <div class="couple-names">
-              Fathima Ansiya <span class="ampersand">&</span> Safeer
-            </div>
-            <div class="thin-divider"></div>
-            <div class="couple-detail">
-              <span data-i18n="bride2">Daughter of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala</span>
-              <span data-i18n="groom2">Son of Shafi & Shabna, Kuruvakkunnan (H), Thengum Valappu</span>
+            <div class="couple-grid">
+              <div class="couple-col">
+                <div class="couple-role" data-i18n="brideLabel">Bride</div>
+                <div class="couple-name">Fathima Ansiya</div>
+                <div class="couple-family">
+                  <span class="relation" data-i18n="do">D/O</span>
+                  <span data-i18n="bride2Family">Veeran Nujoomi &amp; Soudha</span>
+                  <span class="address" data-i18n="bride2Address">Vallil (H), Cheerattamala</span>
+                </div>
+              </div>
+              <div class="couple-col">
+                <div class="couple-role" data-i18n="groomLabel">Groom</div>
+                <div class="couple-name">Safeer</div>
+                <div class="couple-family">
+                  <span class="relation" data-i18n="so">S/O</span>
+                  <span data-i18n="groom2Family">Shafi &amp; Shabna</span>
+                  <span class="address" data-i18n="groom2Address">Kuruvakkunnan (H), Thengum Valappu</span>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -1852,10 +1923,18 @@
           minutes: "Minutes",
           seconds: "Seconds",
           couplesTitle: "Two Couples · One Celebration",
-          groom1: "Son of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala",
-          bride1: "Daughter of Moidutty Musliyar & Juvairiya, Kolayil (H), Cherippur",
-          bride2: "Daughter of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala",
-          groom2: "Son of Shafi & Shabna, Kuruvakkunnan (H), Thengum Valappu",
+          groomLabel: "Groom",
+          brideLabel: "Bride",
+          so: "S/O",
+          do: "D/O",
+          groom1Family: "Veeran Nujoomi & Soudha",
+          groom1Address: "Vallil (H), Cheerattamala",
+          bride1Family: "Moidutty Musliyar & Juvairiya",
+          bride1Address: "Kolayil (H), Cherippur",
+          bride2Family: "Veeran Nujoomi & Soudha",
+          bride2Address: "Vallil (H), Cheerattamala",
+          groom2Family: "Shafi & Shabna",
+          groom2Address: "Kuruvakkunnan (H), Thengum Valappu",
           receptionTitle: "Wedding Reception",
           eventDate: "Sunday, 04 October 2026",
           eventTime: "11:00 AM to 02:00 PM",
@@ -1900,10 +1979,18 @@
           minutes: "دقائق",
           seconds: "ثواني",
           couplesTitle: "زوجان · احتفال واحد",
-          groom1: "ابن فيران نجومي وسودة، فاليل (H)، تشيراتامالا",
-          bride1: "ابنة مويدوتي مسليار وجويرية، كولاييل (H)، تشيريبور",
-          bride2: "ابنة فيران نجومي وسودة، فاليل (H)، تشيراتامالا",
-          groom2: "ابن شافي وشابنا، كوروفاكونان (H)، ثينغوم فالابو",
+          groomLabel: "العريس",
+          brideLabel: "العروس",
+          so: "ابن",
+          do: "ابنة",
+          groom1Family: "فيران نجومي وسودة",
+          groom1Address: "فاليل (H)، تشيراتامالا",
+          bride1Family: "مويدوتي مسليار وجويرية",
+          bride1Address: "كولاييل (H)، تشيريبور",
+          bride2Family: "فيران نجومي وسودة",
+          bride2Address: "فاليل (H)، تشيراتامالا",
+          groom2Family: "شافي وشابنا",
+          groom2Address: "كوروفاكونان (H)، ثينغوم فالابو",
           receptionTitle: "حفل زفاف",
           eventDate: "الأحد، ٠٤ أكتوبر ٢٠٢٦",
           eventTime: "١١:٠٠ صباحًا إلى ٢:٠٠ ظهرًا",
@@ -1948,10 +2035,18 @@
           minutes: "മിനിറ്റുകൾ",
           seconds: "സെക്കൻഡുകൾ",
           couplesTitle: "രണ്ട് ജോഡികൾ · ഒരു ആഘോഷം",
-          groom1: "വീരൻ നുജൂമി & സൗദയുടെ മകൻ, വല്ലിൽ (H), ചീരട്ടമല",
-          bride1: "മൊയ്തുട്ടി മുസ്‌ലിയാർ & ജുവൈരിയയുടെ മകൾ, കോളയിൽ (H), ചെറിപ്പൂർ",
-          bride2: "വീരൻ നുജൂമി & സൗദയുടെ മകൾ, വല്ലിൽ (H), ചീരട്ടമല",
-          groom2: "ഷാഫി & ഷബ്‌നയുടെ മകൻ, കുരുവക്കുന്നൻ (H), തെങ്ങും വളപ്പ്",
+          groomLabel: "വരൻ",
+          brideLabel: "വധു",
+          so: "മകൻ",
+          do: "മകൾ",
+          groom1Family: "വീരൻ നുജൂമി & സൗദ",
+          groom1Address: "വല്ലിൽ (H), ചീരട്ടമല",
+          bride1Family: "മൊയ്തുട്ടി മുസ്‌ലിയാർ & ജുവൈരിയ",
+          bride1Address: "കോളയിൽ (H), ചെറിപ്പൂർ",
+          bride2Family: "വീരൻ നുജൂമി & സൗദ",
+          bride2Address: "വല്ലിൽ (H), ചീരട്ടമല",
+          groom2Family: "ഷാഫി & ഷബ്‌ന",
+          groom2Address: "കുരുവക്കുന്നൻ (H), തെങ്ങും വളപ്പ്",
           receptionTitle: "വിവാഹ സൽക്കാരം",
           eventDate: "ഞായറാഴ്ച, 04 ഒക്ടോബർ 2026",
           eventTime: "രാവിലെ 11:00 മുതൽ ഉച്ചയ്ക്ക് 2:00 വരെ",
