@@ -48,7 +48,6 @@
       cursor: none;
     }
 
-    /* Custom cursor - only on desktop */
     @media (hover: hover) and (pointer: fine) {
       body { cursor: none; }
       a, button, .menu-item, .couple-card, .media-switch button, .btn-gold-outline,
@@ -57,7 +56,6 @@
       }
     }
 
-    /* Touch-friendly */
     @media (hover: none) {
       body { cursor: auto; }
     }
@@ -116,7 +114,7 @@
     }
 
     /* ============================================
-       BACKGROUND ANIMATION — MORE VISIBLE
+       BACKGROUND ANIMATION
        ============================================ */
     .bg-animation {
       position: fixed;
@@ -283,7 +281,10 @@
       50% { transform: translateY(80px); opacity: 1; }
     }
 
-    /* ----- LOADING SCREEN ----- */
+    /* ============================================
+       LOADING SCREEN — N&J  A&S
+       FAST: 400ms ONLY
+       ============================================ */
     #loader {
       position: fixed;
       inset: 0;
@@ -292,7 +293,7 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s;
+      transition: opacity 0.3s ease, visibility 0.3s;
       flex-direction: column;
     }
 
@@ -305,51 +306,40 @@
     .loader-monogram {
       display: flex;
       align-items: center;
-      gap: 48px;
+      gap: 28px;
       font-family: var(--font-display);
-      font-size: 3.2rem;
-      font-weight: 500;
-      letter-spacing: 4px;
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 5px;
       color: var(--antique-gold);
     }
 
-    .loader-monogram .left-mono,
-    .loader-monogram .right-mono {
-      position: relative;
-      display: inline-block;
+    .loader-monogram .mono {
       opacity: 0;
-      animation: fadeInMono 1s ease forwards;
+      transform: translateY(10px);
+      animation: monoReveal 0.35s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
     }
 
-    .loader-monogram .left-mono { animation-delay: 0.3s; }
-    .loader-monogram .right-mono { animation-delay: 0.7s; }
+    .loader-monogram .left { animation-delay: 0.02s; }
+    .loader-monogram .right { animation-delay: 0.1s; }
 
-    @keyframes fadeInMono {
-      to { opacity: 1; }
+    @keyframes monoReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .loader-monogram .divider {
-      width: 1px;
-      height: 48px;
-      background: var(--antique-gold);
-      opacity: 0;
-      animation: fadeInMono 0.8s 0.5s ease forwards;
-    }
-
-    .loader-monogram .left-mono::after,
-    .loader-monogram .right-mono::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0;
+    .loader-monogram .sep {
+      width: 40px;
       height: 1px;
-      background: var(--antique-gold);
-      animation: lineGrow 1.4s 0.6s ease forwards;
+      background: linear-gradient(to right, transparent, var(--antique-gold), transparent);
+      opacity: 0;
+      animation: fadeInSimple 0.3s 0.12s ease forwards;
     }
 
-    @keyframes lineGrow {
-      to { width: 100%; }
+    @keyframes fadeInSimple {
+      to { opacity: 1; }
     }
 
     /* ----- LAYOUT ----- */
@@ -361,7 +351,6 @@
       z-index: 1;
     }
 
-    /* Scroll reveal */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -378,7 +367,7 @@
     }
 
     /* ============================================
-       ARABIC CALLIGRAPHY — ENHANCED
+       ARABIC CALLIGRAPHY
        ============================================ */
     .arabic-calligraphy {
       font-family: var(--font-arabic);
@@ -1251,7 +1240,8 @@
       .arabic-calligraphy.large { font-size: 2.2rem; }
       .event-card { padding: 28px 20px; }
       .rsvp-card { padding: 28px 20px; }
-      .loader-monogram { font-size: 2.4rem; gap: 28px; }
+      .loader-monogram { font-size: 2rem; gap: 18px; letter-spacing: 3px; }
+      .loader-monogram .sep { width: 26px; }
       .menu-panel { right: 16px; left: 16px; min-width: auto; }
       .menu-btn { right: 16px; bottom: 16px; width: 48px; height: 48px; }
       .map-card iframe { height: 240px; }
@@ -1271,6 +1261,8 @@
       .countdown-box { min-width: 65px; padding: 14px 4px; }
       .countdown-number { font-size: 1.5rem; }
       .countdown-label { font-size: 0.55rem; letter-spacing: 1px; }
+      .loader-monogram { font-size: 1.6rem; gap: 14px; letter-spacing: 2px; }
+      .loader-monogram .sep { width: 20px; }
     }
 
     [dir="rtl"] .menu-btn { right: auto; left: 24px; }
@@ -1319,12 +1311,12 @@
     <div class="shimmer"></div>
   </div>
 
-  <!-- LOADING SCREEN -->
+  <!-- LOADING SCREEN — N&J · A&S (FAST: 400ms) -->
   <div id="loader">
     <div class="loader-monogram">
-      <span class="left-mono">N&J</span>
-      <span class="divider"></span>
-      <span class="right-mono">A&S</span>
+      <span class="mono left">N&amp;J</span>
+      <span class="sep"></span>
+      <span class="mono right">A&amp;S</span>
     </div>
   </div>
 
@@ -1449,7 +1441,7 @@
           <div class="media-card">
             <div class="media-content" id="mediaContent">
               <div class="reel-view active" id="reelView">
-                <video id="reelVideo" src="https://files.catbox.moe/67eo93.mp4" autoplay muted loop playsinline preload="auto"></video>
+                <video id="reelVideo" src="https://files.catbox.moe/67eo93.mp4" autoplay loop playsinline preload="auto" controls></video>
               </div>
               <div class="poster-view" id="posterView">
                 <img src="https://files.catbox.moe/sjxlys.jpg" alt="Invitation Poster" loading="lazy">
@@ -1551,11 +1543,11 @@
 
   <script>
     (function() {
-      // ----- LOADER -----
+      // ----- LOADER (FAST: 400ms) -----
       window.addEventListener('load', function() {
         setTimeout(function() {
           document.getElementById('loader').classList.add('hidden');
-        }, 2200);
+        }, 400);
       });
 
       // ============================================
@@ -1590,7 +1582,6 @@
         }
         animateOutline();
 
-        // Hover effect on interactive elements
         const hoverElements = document.querySelectorAll('a, button, .menu-item, .couple-card, .media-switch button, .btn-gold-outline, .rsvp-submit, .poster-overlay-btn, .popup-close, .lightbox-close');
         hoverElements.forEach(function(el) {
           el.addEventListener('mouseenter', function() {
@@ -1605,7 +1596,7 @@
       }
 
       // ============================================
-      // TOUCH RIPPLE ANIMATION
+      // TOUCH RIPPLE
       // ============================================
       document.addEventListener('touchstart', function(e) {
         const touch = e.touches[0];
@@ -1641,7 +1632,7 @@
       });
 
       // ============================================
-      // COUNTDOWN TIMER
+      // COUNTDOWN
       // ============================================
       const targetDate = new Date('2026-10-04T11:00:00').getTime();
 
@@ -1803,7 +1794,7 @@
           popupClose: "അടയ്ക്കുക",
           bestWishes: "ആശംസകൾ",
           family1: "നിസാർ & ജുമാന · അൻസിയ & സഫീർ",
-          family2: "കുടുംബങ്ങൾക്കൊപ്പം",
+          family2: "കുടുംബങ്ങളോടൊപ്പം",
           footerLove: "സ്നേഹത്തോടും പ്രാർത്ഥനയോടും കൂടി.",
           theme: "തീം",
           language: "ഭാഷ",
@@ -1941,6 +1932,7 @@
         reelVideo.pause();
       });
 
+      // Attempt autoplay (has sound — browser may still block)
       reelVideo.play().catch(function() {});
 
       // ----- LIGHTBOX -----
