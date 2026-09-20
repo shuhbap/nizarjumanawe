@@ -4,6 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>NIZAR JUMANA & ANSIYA SAFEER</title>
+
+  <!-- ============================================
+       FAVICON (N&J Monogram in Gold)
+       ============================================ -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdfaf7'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-weight='600' fill='%23b89b7b' text-anchor='middle' letter-spacing='1'%3EN%26J%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fdfaf7'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-weight='600' fill='%23b89b7b' text-anchor='middle' letter-spacing='1'%3EN%26J%3C/text%3E%3C/svg%3E">
+
+  <!-- ============================================
+       LINK PREVIEW / OPEN GRAPH (WhatsApp, FB, etc.)
+       ============================================ -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nizar & Jumana · Ansiya & Safeer — Wedding Invitation">
+  <meta property="og:description" content="Two Couples · One Celebration. Save the date — Sunday, 04 October 2026 · K.N.M Auditorium, Kattupara.">
+  <meta property="og:image" content="https://files.catbox.moe/sjxlys.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Wedding Invitation — Nizar & Jumana · Ansiya & Safeer">
+  <meta property="og:url" content="">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nizar & Jumana · Ansiya & Safeer — Wedding Invitation">
+  <meta name="twitter:description" content="Two Couples · One Celebration. Save the date — Sunday, 04 October 2026 · K.N.M Auditorium, Kattupara.">
+  <meta name="twitter:image" content="https://files.catbox.moe/sjxlys.jpg">
+
+  <!-- WhatsApp / Telegram / iMessage -->
+  <meta itemprop="name" content="Nizar & Jumana · Ansiya & Safeer — Wedding Invitation">
+  <meta itemprop="description" content="Two Couples · One Celebration. Save the date — Sunday, 04 October 2026.">
+  <meta itemprop="image" content="https://files.catbox.moe/sjxlys.jpg">
+
+  <meta name="theme-color" content="#b89b7b">
+  <meta name="description" content="Wedding invitation for Nizar & Jumana and Ansiya & Safeer. Two couples, one celebration. Sunday, 04 October 2026.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -281,7 +314,7 @@
     }
 
     /* ============================================
-       LOADING SCREEN — N&J · A&S — FAST & BUG FIXED
+       LOADING SCREEN — N&J · A&S
        ============================================ */
     #loader {
       position: fixed;
@@ -1418,7 +1451,7 @@
     <div class="shimmer"></div>
   </div>
 
-  <!-- LOADING SCREEN — N&J · A&S (FAST) -->
+  <!-- LOADING SCREEN — N&J · A&S -->
   <div id="loader">
     <div class="loader-monogram">
       <span class="mono left">N&amp;J</span>
@@ -1483,7 +1516,7 @@
     <!-- Couples -->
     <section style="padding: 16px 0;" class="reveal">
       <div class="container">
-        <div class="section-title" data-i18n="couplesTitle">SAVE THE DATE</div>
+        <div class="section-title" data-i18n="couplesTitle">Two Couples · One Celebration</div>
         <div class="couples-wrapper" id="couplesWrapper">
           <div class="couple-card">
             <div class="couple-names">
@@ -1667,7 +1700,7 @@
   <script>
     (function() {
       // ============================================
-      // LOADER — BUG FIXED (HIDES ON LOAD OR AFTER 800MS MAX)
+      // LOADER
       // ============================================
       var loader = document.getElementById('loader');
       var loaderHidden = false;
@@ -1679,10 +1712,8 @@
         }
       }
 
-      // Fallback: hide after 800ms no matter what
       var loaderFallback = setTimeout(hideLoader, 800);
 
-      // Hide as soon as possible after load
       if (document.readyState === 'complete') {
         clearTimeout(loaderFallback);
         setTimeout(hideLoader, 250);
@@ -1830,9 +1861,9 @@
           eventTime: "11:00 AM to 02:00 PM",
           eventVenue: "K.N.M Auditorium, Kattupara",
           openLocation: "Open Location",
-          mapTitle: "Location · Satellite View",
+          mapTitle: "Location",
           mapVenue: "K.N.M Auditorium, Kattupara",
-          mapNote: "Satellite view · Tap to open in Google Maps",
+          mapNote: "Tap to open in Google Maps",
           mediaTitle: "Reel & Invitation",
           viewPoster: "View Invitation Poster",
           switchReel: "Reel",
@@ -1878,9 +1909,9 @@
           eventTime: "١١:٠٠ صباحًا إلى ٢:٠٠ ظهرًا",
           eventVenue: "قاعة K.N.M، كاتوبارا",
           openLocation: "افتح الموقع",
-          mapTitle: "الموقع · عرض القمر الصناعي",
+          mapTitle: "الموقع",
           mapVenue: "قاعة K.N.M، كاتوبارا",
-          mapNote: "عرض القمر الصناعي · اضغط لفتح خرائط جوجل",
+          mapNote: "اضغط لفتح خرائط جوجل",
           mediaTitle: "مقطع الفيديو والدعوة",
           viewPoster: "عرض ملصق الدعوة",
           switchReel: "فيديو",
@@ -1926,9 +1957,9 @@
           eventTime: "രാവിലെ 11:00 മുതൽ ഉച്ചയ്ക്ക് 2:00 വരെ",
           eventVenue: "K.N.M ഓഡിറ്റോറിയം, കാട്ടുപാറ",
           openLocation: "ലൊക്കേഷൻ തുറക്കുക",
-          mapTitle: "സ്ഥലം · ഉപഗ്രഹ കാഴ്ച",
+          mapTitle: "സ്ഥലം",
           mapVenue: "K.N.M ഓഡിറ്റോറിയം, കാട്ടുപാറ",
-          mapNote: "ഉപഗ്രഹ കാഴ്ച · ഗൂഗിൾ മാപ്പിൽ തുറക്കാൻ ടാപ്പ് ചെയ്യുക",
+          mapNote: "ഗൂഗിൾ മാപ്പിൽ തുറക്കാൻ ടാപ്പ് ചെയ്യുക",
           mediaTitle: "റീൽ & ക്ഷണം",
           viewPoster: "ക്ഷണ പോസ്റ്റർ കാണുക",
           switchReel: "റീൽ",
@@ -2073,7 +2104,6 @@
         switchPoster.classList.remove('active');
         reelView.classList.add('active');
         posterView.classList.remove('active');
-        // Do NOT autoplay — user presses play
       });
 
       switchPoster.addEventListener('click', function() {
@@ -2083,8 +2113,6 @@
         reelView.classList.remove('active');
         reelVideo.pause();
       });
-
-      // NO autoplay on page load — video stays paused with controls visible
 
       // ----- LIGHTBOX -----
       openPosterBtn.addEventListener('click', function(e) {
