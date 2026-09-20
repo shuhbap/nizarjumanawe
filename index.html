@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Wedding Invitation · Two Couples</title>
+  <style>
+    /* ----- RESET & GLOBAL ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ivory: #fdfaf7;
+      --pearl: #f9f6f2;
+      --champagne: #e8d9c5;
+      --antique-gold: #b89b7b;
+      --gold-light: #dac09a;
+      --warm-grey: #e6e1db;
+      --text-dark: #2e2a27;
+      --text-soft: #5b534b;
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.03), 0 4px 10px rgba(0, 0, 0, 0.02);
+      --shadow-card: 0 20px 40px -10px rgba(0, 0, 0, 0.05), 0 8px 20px -8px rgba(0, 0, 0, 0.03);
+      --border-light: 1px solid rgba(184, 155, 123, 0.25);
+      --font-serif: 'Times New Roman', 'Georgia', 'Palatino', serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-arabic: 'Noto Naskh Arabic', 'Amiri', 'Times New Roman', serif;
+      --font-malayalam: 'Noto Sans Malayalam', 'Manjari', 'Arial', sans-serif;
+      --transition-smooth: 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+      --transition-fast: 0.25s ease;
+    }
+
+    body {
+      background: var(--ivory);
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    body.dark {
+      --ivory: #1e1b18;
+      --pearl: #2a2723;
+      --champagne: #3d362e;
+      --antique-gold: #c9b294;
+      --gold-light: #c7aa82;
+      --warm-grey: #3b3631;
+      --text-dark: #f0ebe5;
+      --text-soft: #c2b8ae;
+      --border-light: 1px solid rgba(201, 178, 148, 0.3);
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.2);
+      --shadow-card: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ----- LOADING SCREEN ----- */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s;
+      flex-direction: column;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .monogram {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      letter-spacing: 8px;
+      color: var(--antique-gold);
+      position: relative;
+      display: inline-block;
+      font-weight: 300;
+    }
+
+    .monogram svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .monogram path {
+      stroke: var(--antique-gold);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: drawLine 2.2s ease forwards;
+    }
+
+    @keyframes drawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .monogram span {
+      opacity: 0;
+      animation: fadeInLetters 1.2s 0.8s ease forwards;
+    }
+
+    @keyframes fadeInLetters {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ----- LAYOUT ----- */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 48px 0;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s var(--transition-smooth) forwards;
+    }
+
+    section:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    section:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    section:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    section:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    section:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    section:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ----- TYPOGRAPHY ----- */
+    .arabic-calligraphy {
+      font-family: var(--font-arabic);
+      font-size: 2rem;
+      line-height: 1.7;
+      color: var(--text-dark);
+      text-align: center;
+      direction: rtl;
+      letter-spacing: 0.5px;
+      font-weight: 400;
+      padding: 0 12px;
+    }
+
+    .arabic-calligraphy.large {
+      font-size: 2.4rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--antique-gold);
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .gold-divider {
+      width: 64px;
+      height: 1px;
+      background: var(--antique-gold);
+      opacity: 0.6;
+      margin: 20px auto;
+    }
+
+    .gold-divider.wide {
+      width: 120px;
+    }
+
+    /* ----- COUPLES CARDS ----- */
+    .couples-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .couple-card {
+      background: var(--pearl);
+      border: var(--border-light);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: var(--shadow-soft);
+      transition: box-shadow 0.4s, transform 0.4s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    body.dark .couple-card {
+      background: var(--pearl);
+    }
+
+    .couple-card:hover {
+      box-shadow: var(--shadow-card);
+      transform: translateY(-2px);
+    }
+
+    .couple-names {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.5;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .couple-names .ampersand {
+      color: var(--antique-gold);
+      font-style: italic;
+      display: inline-block;
+      margin: 0 4px;
+    }
+
+    .couple-detail {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+
+    .couple-detail span {
+      display: block;
+    }
+
+    .thin-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--antique-gold);
+      opacity: 0.4;
+      margin: 16px 0;
+    }
+
+    /* ----- EVENT CARD ----- */
+    .event-card {
+      background: var(--pearl);
+      border: var(--border-light);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .event-card .event-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .event-date {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin: 4px 0;
+    }
+
+    .event-time {
+      font-size: 1rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .event-venue {
+      font-size: 1rem;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .btn-gold-outline {
+      display: inline-block;
+      padding: 12px 32px;
+      border: 1px solid var(--antique-gold);
+      background: transparent;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      font-weight: 400;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+
+    .btn-gold-outline:hover {
+      background: var(--antique-gold);
+      color: var(--ivory);
+      border-color: var(--antique-gold);
+    }
+
+    body.dark .btn-gold-outline:hover {
+      color: var(--ivory);
+      background: var(--antique-gold);
+    }
+
+    /* ----- MEDIA ROW (REEL + POSTER) ----- */
+    .media-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .media-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--pearl);
+      border: var(--border-light);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 300px;
+    }
+
+    .media-card video,
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      flex: 1;
+      background: var(--pearl);
+      min-height: 280px;
+    }
+
+    .poster-wrapper {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .poster-overlay-btn {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      background: rgba(253, 250, 247, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--antique-gold);
+      color: var(--text-dark);
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      white-space: nowrap;
+      font-weight: 400;
+      font-family: var(--font-sans);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .poster-overlay-btn:hover {
+      background: var(--antique-gold);
+      color: var(--ivory);
+    }
+
+    body.dark .poster-overlay-btn {
+      background: rgba(30, 27, 24, 0.85);
+      color: var(--text-dark);
+    }
+
+    body.dark .poster-overlay-btn:hover {
+      background: var(--antique-gold);
+      color: var(--ivory);
+    }
+
+    /* ----- LIGHTBOX ----- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 18, 16, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .lightbox.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+      background: var(--ivory);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(253, 250, 247, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(253, 250, 247, 0.3);
+      color: var(--ivory);
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s;
+      line-height: 1;
+      font-family: var(--font-sans);
+    }
+
+    .lightbox-close:hover {
+      background: rgba(253, 250, 247, 0.3);
+    }
+
+    /* ----- RSVP SECTION ----- */
+    .rsvp-card {
+      background: var(--pearl);
+      border: var(--border-light);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-soft);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .rsvp-field {
+      margin-bottom: 20px;
+    }
+
+    .rsvp-field label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+      font-weight: 400;
+    }
+
+    .rsvp-field input,
+    .rsvp-field select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--warm-grey);
+      border-radius: 12px;
+      background: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .rsvp-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b89b7b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .rsvp-field input:focus,
+    .rsvp-field select:focus {
+      border-color: var(--antique-gold);
+      box-shadow: 0 0 0 3px rgba(184, 155, 123, 0.12);
+    }
+
+    .rsvp-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--antique-gold);
+      border: none;
+      border-radius: 40px;
+      color: var(--ivory);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      font-family: var(--font-sans);
+      font-weight: 400;
+      margin-top: 8px;
+    }
+
+    .rsvp-submit:hover {
+      background: #a58666;
+    }
+
+    .rsvp-submit:active {
+      transform: scale(0.98);
+    }
+
+    /* ----- FOOTER ----- */
+    .footer {
+      text-align: center;
+      padding: 48px 24px 32px;
+      border-top: 1px solid var(--warm-grey);
+      margin-top: 16px;
+    }
+
+    .footer-names {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      letter-spacing: 0.5px;
+      line-height: 1.8;
+    }
+
+    .footer-names .ampersand {
+      color: var(--antique-gold);
+      font-style: italic;
+    }
+
+    .footer-sub {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      letter-spacing: 1px;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ----- FLOATING MENU ----- */
+    .menu-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--ivory);
+      border: 1px solid var(--antique-gold);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9000;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      color: var(--antique-gold);
+    }
+
+    body.dark .menu-btn {
+      background: var(--pearl);
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .menu-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .menu-panel {
+      position: fixed;
+      bottom: 88px;
+      right: 24px;
+      background: var(--ivory);
+      border: var(--border-light);
+      border-radius: 20px;
+      padding: 16px 0;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+      min-width: 200px;
+      z-index: 9001;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      backdrop-filter: blur(12px);
+    }
+
+    body.dark .menu-panel {
+      background: var(--pearl);
+    }
+
+    .menu-panel.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      transition: background 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .menu-item:hover {
+      background: rgba(184, 155, 123, 0.08);
+    }
+
+    .menu-item .label {
+      letter-spacing: 0.5px;
+    }
+
+    .menu-item .value {
+      color: var(--antique-gold);
+      font-size: 0.8rem;
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: var(--warm-grey);
+      margin: 8px 16px;
+      opacity: 0.5;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      section {
+        padding: 32px 0;
+      }
+
+      .couples-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .couples-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .couple-card {
+        min-width: 85%;
+        scroll-snap-align: center;
+        padding: 28px 20px;
+      }
+
+      .media-row {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 14px;
+        padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .media-row::-webkit-scrollbar {
+        display: none;
+      }
+
+      .media-card {
+        min-width: 82%;
+        scroll-snap-align: center;
+        min-height: 280px;
+      }
+
+      .arabic-calligraphy {
+        font-size: 1.5rem;
+      }
+
+      .arabic-calligraphy.large {
+        font-size: 1.8rem;
+      }
+
+      .event-card {
+        padding: 28px 20px;
+      }
+
+      .rsvp-card {
+        padding: 28px 20px;
+      }
+
+      .monogram {
+        font-size: 3rem;
+      }
+
+      .menu-panel {
+        right: 16px;
+        left: 16px;
+        min-width: auto;
+      }
+
+      .menu-btn {
+        right: 16px;
+        bottom: 16px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .footer-names {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .couple-names {
+        font-size: 1.1rem;
+      }
+
+      .couple-card {
+        min-width: 88%;
+      }
+
+      .media-card {
+        min-width: 85%;
+      }
+    }
+
+    /* RTL adjustments */
+    [dir="rtl"] .menu-btn {
+      right: auto;
+      left: 24px;
+    }
+
+    [dir="rtl"] .menu-panel {
+      right: auto;
+      left: 24px;
+    }
+
+    [dir="rtl"] .lightbox-close {
+      right: auto;
+      left: 24px;
+    }
+
+    [dir="rtl"] .poster-overlay-btn {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 768px) {
+      [dir="rtl"] .menu-btn {
+        left: 16px;
+        right: auto;
+      }
+      [dir="rtl"] .menu-panel {
+        left: 16px;
+        right: 16px;
+      }
+      [dir="rtl"] .lightbox-close {
+        left: 16px;
+        right: auto;
+      }
+    }
+
+    /* Hide Google translate or other injected elements */
+    .goog-te-banner-frame {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="monogram">
+      <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <path d="M30,70 L30,30 L70,70 L70,30" />
+        <path d="M90,30 L90,70 M90,50 L130,50 M130,30 L130,70" />
+      </svg>
+      <span>N&J</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Opening / Arabic calligraphy -->
+    <section style="padding-top: 64px; padding-bottom: 16px;">
+      <div class="container">
+        <div class="arabic-calligraphy large" data-i18n="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <div class="gold-divider wide"></div>
+      </div>
+    </section>
+
+    <!-- Couples -->
+    <section style="padding-top: 8px; padding-bottom: 24px;">
+      <div class="container">
+        <div class="section-title" data-i18n="couplesTitle">Two Couples · One Celebration</div>
+        <div class="couples-grid" id="couplesGrid">
+          <!-- Couple 1 -->
+          <div class="couple-card">
+            <div class="couple-names">
+              Hafiz Muhammed Nizar Baqavi <span class="ampersand">&</span> Fathima Jumana Sana-Iyya
+            </div>
+            <div class="thin-divider"></div>
+            <div class="couple-detail">
+              <span data-i18n="groom1">Son of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala</span>
+              <span data-i18n="bride1">Daughter of Moidutty Musliyar & Juvairiya, Kolayil (H), Cherippur</span>
+            </div>
+          </div>
+          <!-- Couple 2 -->
+          <div class="couple-card">
+            <div class="couple-names">
+              Fathima Ansiya <span class="ampersand">&</span> Safeer
+            </div>
+            <div class="thin-divider"></div>
+            <div class="couple-detail">
+              <span data-i18n="bride2">Daughter of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala</span>
+              <span data-i18n="groom2">Son of Shafi & Shabna, Kuruvakkunnan (H), Thengum Valappu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Arabic blessing -->
+    <section style="padding: 16px 0 24px;">
+      <div class="container">
+        <div class="arabic-calligraphy" data-i18n="blessing">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+        <div class="gold-divider"></div>
+      </div>
+    </section>
+
+    <!-- Event card -->
+    <section style="padding: 24px 0;">
+      <div class="container">
+        <div class="event-card">
+          <div class="event-title" data-i18n="receptionTitle">Wedding Reception</div>
+          <div class="event-date" data-i18n="eventDate">Sunday, 04 October 2026</div>
+          <div class="event-time" data-i18n="eventTime">11:00 AM to 02:00 PM</div>
+          <div class="event-venue" data-i18n="eventVenue">K.N.M Auditorium, Kattupara</div>
+          <a href="https://maps.app.goo.gl/Jm4zbJZpSwHQYHwdA?g_st=iw" target="_blank" class="btn-gold-outline" data-i18n="openLocation">Open Location</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reel + Poster -->
+    <section style="padding: 24px 0;">
+      <div class="container">
+        <div class="section-title" data-i18n="mediaTitle">Reel & Invitation</div>
+        <div class="media-row">
+          <!-- Reel -->
+          <div class="media-card">
+            <video src="https://xenocdn.xenocdn.workers.dev/46b814e5.mp4" controls playsinline preload="metadata" poster=""></video>
+          </div>
+          <!-- Poster -->
+          <div class="media-card poster-wrapper">
+            <img src="https://xenocdn.xenocdn.workers.dev/bcbf2003.jpeg" alt="Invitation Poster" loading="lazy">
+            <button class="poster-overlay-btn" id="openPosterBtn" data-i18n="viewPoster">View Invitation Poster</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section style="padding: 24px 0;">
+      <div class="container">
+        <div class="section-title" data-i18n="rsvpTitle">RSVP</div>
+        <div class="rsvp-card">
+          <div class="rsvp-field">
+            <label data-i18n="guestName">Guest Name</label>
+            <input type="text" id="guestName" placeholder="Your name" data-i18n-placeholder="guestPlaceholder">
+          </div>
+          <div class="rsvp-field">
+            <label data-i18n="attendance">Attendance</label>
+            <select id="attendance">
+              <option value="yes" data-i18n="attendingYes">Joyfully attending</option>
+              <option value="no" data-i18n="attendingNo">Regretfully unable</option>
+            </select>
+          </div>
+          <div class="rsvp-field">
+            <label data-i18n="numGuests">Number of Guests</label>
+            <input type="number" id="numGuests" min="1" value="1">
+          </div>
+          <button class="rsvp-submit" id="rsvpSubmit" data-i18n="rsvpSubmit">Send RSVP</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-names">
+        Hafiz Muhammed Nizar Baqavi <span class="ampersand">&</span> Fathima Jumana Sana-Iyya<br>
+        Fathima Ansiya <span class="ampersand">&</span> Safeer
+      </div>
+      <div class="footer-sub" data-i18n="footerLove">With love and duas.</div>
+    </footer>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <img src="https://xenocdn.xenocdn.workers.dev/bcbf2003.jpeg" alt="Invitation Poster Fullscreen" id="lightboxImg">
+    <div class="lightbox-close" id="lightboxClose">&times;</div>
+  </div>
+
+  <!-- FLOATING MENU -->
+  <div class="menu-btn" id="menuBtn">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    </svg>
+  </div>
+
+  <div class="menu-panel" id="menuPanel">
+    <div class="menu-item" id="themeToggle">
+      <span class="label" data-i18n="theme">Theme</span>
+      <span class="value" id="themeValue">Light</span>
+    </div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" id="langToggle">
+      <span class="label" data-i18n="language">Language</span>
+      <span class="value" id="langValue">English</span>
+    </div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" id="musicToggle">
+      <span class="label" data-i18n="music">Music</span>
+      <span class="value" id="musicValue">Off</span>
+    </div>
+    <div class="menu-divider"></div>
+    <div class="menu-item" id="scrollTop">
+      <span class="label" data-i18n="scrollTop">Scroll to Top</span>
+      <span class="value">↑</span>
+    </div>
+  </div>
+
+  <!-- AUDIO (soft background) -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    (function() {
+      // ----- LOADER -----
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.getElementById('loader').classList.add('hidden');
+        }, 2200);
+      });
+
+      // ----- TRANSLATIONS -----
+      const translations = {
+        en: {
+          bismillah: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          blessing: "بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+          couplesTitle: "Two Couples · One Celebration",
+          groom1: "Son of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala",
+          bride1: "Daughter of Moidutty Musliyar & Juvairiya, Kolayil (H), Cherippur",
+          bride2: "Daughter of Veeran Nujoomi & Soudha, Vallil (H), Cheerattamala",
+          groom2: "Son of Shafi & Shabna, Kuruvakkunnan (H), Thengum Valappu",
+          receptionTitle: "Wedding Reception",
+          eventDate: "Sunday, 04 October 2026",
+          eventTime: "11:00 AM to 02:00 PM",
+          eventVenue: "K.N.M Auditorium, Kattupara",
+          openLocation: "Open Location",
+          mediaTitle: "Reel & Invitation",
+          viewPoster: "View Invitation Poster",
+          rsvpTitle: "RSVP",
+          guestName: "Guest Name",
+          guestPlaceholder: "Your name",
+          attendance: "Attendance",
+          attendingYes: "Joyfully attending",
+          attendingNo: "Regretfully unable",
+          numGuests: "Number of Guests",
+          rsvpSubmit: "Send RSVP",
+          footerLove: "With love and duas.",
+          theme: "Theme",
+          language: "Language",
+          music: "Music",
+          scrollTop: "Scroll to Top"
+        },
+        ar: {
+          bismillah: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          blessing: "بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+          couplesTitle: "زوجان · احتفال واحد",
+          groom1: "ابن فيران نجومي وسودة، فاليل (H)، تشيراتامالا",
+          bride1: "ابنة مويدوتي مسليار وجويرية، كولاييل (H)، تشيريبور",
+          bride2: "ابنة فيران نجومي وسودة، فاليل (H)، تشيراتامالا",
+          groom2: "ابن شافي وشابنا، كوروفاكونان (H)، ثينغوم فالابو",
+          receptionTitle: "حفل زفاف",
+          eventDate: "الأحد، ٠٤ أكتوبر ٢٠٢٦",
+          eventTime: "١١:٠٠ صباحًا إلى ٢:٠٠ ظهرًا",
+          eventVenue: "قاعة K.N.M، كاتوبارا",
+          openLocation: "افتح الموقع",
+          mediaTitle: "مقطع الفيديو والدعوة",
+          viewPoster: "عرض ملصق الدعوة",
+          rsvpTitle: "تأكيد الحضور",
+          guestName: "اسم الضيف",
+          guestPlaceholder: "اسمك",
+          attendance: "الحضور",
+          attendingYes: "سأحضر بكل سرور",
+          attendingNo: "للأسف لن أتمكن",
+          numGuests: "عدد الضيوف",
+          rsvpSubmit: "إرسال التأكيد",
+          footerLove: "مع الحب والدعاء.",
+          theme: "المظهر",
+          language: "اللغة",
+          music: "الموسيقى",
+          scrollTop: "التمرير للأعلى"
+        },
+        ml: {
+          bismillah: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          blessing: "بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+          couplesTitle: "രണ്ട് ജോഡികൾ · ഒരു ആഘോഷം",
+          groom1: "വീരൻ നുജൂമി & സൗദയുടെ മകൻ, വല്ലിൽ (H), ചീരട്ടമല",
+          bride1: "മൊയ്തുട്ടി മുസ്‌ലിയാർ & ജുവൈരിയയുടെ മകൾ, കോളയിൽ (H), ചെറിപ്പൂർ",
+          bride2: "വീരൻ നുജൂമി & സൗദയുടെ മകൾ, വല്ലിൽ (H), ചീരട്ടമല",
+          groom2: "ഷാഫി & ഷബ്‌നയുടെ മകൻ, കുരുവക്കുന്നൻ (H), തെങ്ങും വളപ്പ്",
+          receptionTitle: "വിവാഹ സൽക്കാരം",
+          eventDate: "ഞായറാഴ്ച, 04 ഒക്ടോബർ 2026",
+          eventTime: "രാവിലെ 11:00 മുതൽ ഉച്ചയ്ക്ക് 2:00 വരെ",
+          eventVenue: "K.N.M ഓഡിറ്റോറിയം, കാട്ടുപാറ",
+          openLocation: "ലൊക്കേഷൻ തുറക്കുക",
+          mediaTitle: "റീൽ & ക്ഷണം",
+          viewPoster: "ക്ഷണ പോസ്റ്റർ കാണുക",
+          rsvpTitle: "RSVP",
+          guestName: "അതിഥിയുടെ പേര്",
+          guestPlaceholder: "നിങ്ങളുടെ പേര്",
+          attendance: "ഹാജർ",
+          attendingYes: "സന്തോഷത്തോടെ പങ്കെടുക്കും",
+          attendingNo: "ഖേദത്തോടെ പങ്കെടുക്കാൻ കഴിയില്ല",
+          numGuests: "അതിഥികളുടെ എണ്ണം",
+          rsvpSubmit: "RSVP അയയ്ക്കുക",
+          footerLove: "സ്നേഹത്തോടും പ്രാർത്ഥനയോടും കൂടി.",
+          theme: "തീം",
+          language: "ഭാഷ",
+          music: "സംഗീതം",
+          scrollTop: "മുകളിലേക്ക് പോകുക"
+        }
+      };
+
+      let currentLang = 'en';
+      let currentTheme = 'light';
+      let musicPlaying = false;
+
+      // ----- DOM REFS -----
+      const htmlEl = document.documentElement;
+      const bodyEl = document.body;
+      const menuBtn = document.getElementById('menuBtn');
+      const menuPanel = document.getElementById('menuPanel');
+      const themeToggle = document.getElementById('themeToggle');
+      const themeValue = document.getElementById('themeValue');
+      const langToggle = document.getElementById('langToggle');
+      const langValue = document.getElementById('langValue');
+      const musicToggle = document.getElementById('musicToggle');
+      const musicValue = document.getElementById('musicValue');
+      const scrollTopBtn = document.getElementById('scrollTop');
+      const bgMusic = document.getElementById('bgMusic');
+      const openPosterBtn = document.getElementById('openPosterBtn');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      // ----- MENU TOGGLE -----
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        menuPanel.classList.toggle('open');
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!menuPanel.contains(e.target) && e.target !== menuBtn) {
+          menuPanel.classList.remove('open');
+        }
+      });
+
+      // ----- THEME -----
+      function setTheme(theme) {
+        currentTheme = theme;
+        if (theme === 'dark') {
+          bodyEl.classList.add('dark');
+          themeValue.textContent = 'Dark';
+        } else {
+          bodyEl.classList.remove('dark');
+          themeValue.textContent = 'Light';
+        }
+      }
+
+      themeToggle.addEventListener('click', function() {
+        setTheme(currentTheme === 'light' ? 'dark' : 'light');
+      });
+
+      // ----- LANGUAGE -----
+      function setLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+        // update all elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) {
+            el.textContent = t[key];
+          }
+        });
+        // placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (t[key]) {
+            el.placeholder = t[key];
+          }
+        });
+        // update lang value display
+        const langMap = { en: 'English', ar: 'العربية', ml: 'മലയാളം' };
+        langValue.textContent = langMap[lang] || 'English';
+        // RTL
+        if (lang === 'ar') {
+          htmlEl.setAttribute('dir', 'rtl');
+          htmlEl.setAttribute('lang', 'ar');
+        } else if (lang === 'ml') {
+          htmlEl.setAttribute('dir', 'ltr');
+          htmlEl.setAttribute('lang', 'ml');
+        } else {
+          htmlEl.setAttribute('dir', 'ltr');
+          htmlEl.setAttribute('lang', 'en');
+        }
+        // update theme value label
+        if (currentTheme === 'dark') {
+          themeValue.textContent = (lang === 'ar') ? 'داكن' : (lang === 'ml') ? 'ഡാർക്ക്' : 'Dark';
+        } else {
+          themeValue.textContent = (lang === 'ar') ? 'فاتح' : (lang === 'ml') ? 'ലൈറ്റ്' : 'Light';
+        }
+        // update music value
+        musicValue.textContent = musicPlaying ? (lang === 'ar' ? 'تشغيل' : lang === 'ml' ? 'പ്ലേ' : 'On') : (lang === 'ar' ? 'إيقاف' : lang === 'ml' ? 'ഓഫ്' : 'Off');
+      }
+
+      langToggle.addEventListener('click', function() {
+        const order = ['en', 'ar', 'ml'];
+        const idx = order.indexOf(currentLang);
+        const next = order[(idx + 1) % order.length];
+        setLanguage(next);
+      });
+
+      // ----- MUSIC -----
+      musicToggle.addEventListener('click', function() {
+        if (musicPlaying) {
+          bgMusic.pause();
+          musicPlaying = false;
+          musicValue.textContent = (currentLang === 'ar') ? 'إيقاف' : (currentLang === 'ml') ? 'ഓഫ്' : 'Off';
+        } else {
+          bgMusic.play().catch(function() {});
+          musicPlaying = true;
+          musicValue.textContent = (currentLang === 'ar') ? 'تشغيل' : (currentLang === 'ml') ? 'പ്ലേ' : 'On';
+        }
+      });
+
+      // ----- SCROLL TOP -----
+      scrollTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ----- LIGHTBOX -----
+      openPosterBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        lightbox.classList.add('open');
+      });
+
+      lightboxClose.addEventListener('click', function() {
+        lightbox.classList.remove('open');
+      });
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('open');
+        }
+      });
+
+      // ----- RSVP (placeholder for WhatsApp integration) -----
+      document.getElementById('rsvpSubmit').addEventListener('click', function() {
+        const name = document.getElementById('guestName').value.trim();
+        const attendance = document.getElementById('attendance').value;
+        const guests = document.getElementById('numGuests').value;
+        if (!name) {
+          alert('Please enter your name.');
+          return;
+        }
+        // Placeholder – later replace with WhatsApp number
+        const msg = `RSVP from ${name} · Attendance: ${attendance} · Guests: ${guests}`;
+        alert(msg + '\n\n(WhatsApp integration can be added here)');
+        // Example: window.open(`https://wa.me/PHONE?text=${encodeURIComponent(msg)}`)
+      });
+
+      // ----- INITIAL LANGUAGE -----
+      setLanguage('en');
+
+      // ----- CLOSE MENU ON SCROLL (optional) -----
+      window.addEventListener('scroll', function() {
+        menuPanel.classList.remove('open');
+      });
+
+      // ----- SWIPE SUPPORT FOR LIGHTBOX (basic) -----
+      let touchStartX = 0;
+      lightbox.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      lightbox.addEventListener('touchend', function(e) {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 60) {
+          lightbox.classList.remove('open');
+        }
+      }, { passive: true });
+
+    })();
+  </script>
+</body>
+</html>
